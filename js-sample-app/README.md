@@ -3,8 +3,8 @@
 
 ## Get started
 
-1. Clone the repository, ex `$ git clone <URL>`
-2. Navigate to the directory, ex `$ cd /path`
+1. Clone the repository, ex `$ git clone https://github.com/Esri/arcgis-covid-samples.git`
+2. Navigate to the directory, ex `$ cd arcgis-covid-samples/js-sample-app`
 3. Run your favorite static server, ex `$ serve`
 
 ## Structure
