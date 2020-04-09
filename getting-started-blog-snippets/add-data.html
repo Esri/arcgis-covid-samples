@@ -44,22 +44,23 @@
         renderer: {
           type: 'unique-value',
           field: 'grade_distance',
-          defaultSymbol: {type: 'simple-fill'},
+          defaultSymbol: {type: 'simple-fill', outline: {color: 'gray', width: '0.1px'}},
+          legendOptions: {title: 'Grade'},
           uniqueValueInfos: [{
             value: 'A',
-            symbol: {type: 'simple-fill', color: '#0070ff'}
+            symbol: {type: 'simple-fill', color: '#0070ff', outline: {color: 'gray', width: '0.1px'}}
           }, {
             value: 'B',
-            symbol: {type: 'simple-fill', color: '#bed2ff'}
+            symbol: {type: 'simple-fill', color: '#bed2ff', outline: {color: 'gray', width: '0.1px'}}
           }, {
             value: 'C',
-            symbol: {type: 'simple-fill', color: '#e6e600'}
+            symbol: {type: 'simple-fill', color: '#e6e600', outline: {color: 'gray', width: '0.1px'}}
           }, {
             value: 'D',
-            symbol: {type: 'simple-fill', color: '#ffaa00'}
+            symbol: {type: 'simple-fill', color: '#ffaa00', outline: {color: 'gray', width: '0.1px'}}
           }, {
             value: 'F',
-            symbol: {type: 'simple-fill', color: '#e60000'}
+            symbol: {type: 'simple-fill', color: '#e60000', outline: {color: 'gray', width: '0.1px'}}
           }],
         },
         popupTemplate: {
