@@ -3,7 +3,7 @@
 
 ## Contents
 * [`js-sample-app`](/js-sample-app/): a sample web app that showcases a couple useful (and cool) client-side capabilities to help make your apps interactive
-* [`snippets-getting-started-blog`](/snippets-getting-started-blog): quick output HTML files for this [getting started blog](https://www.esri.com/arcgis-blog/products/product/mapping/developer-tools-for-covid-19-apps/)
+* [`getting-started-blog-snippets`](/getting-started-blog-snippets): quick output HTML files for this [getting started blog](https://www.esri.com/arcgis-blog/products/product/mapping/developer-tools-for-covid-19-apps/)
 
 ## Other resources
 
