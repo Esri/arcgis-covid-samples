@@ -1,0 +1,95 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ArcGIS JavaScript Tutorials: Create a Starter App</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  
+    <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.15/"></script>
+  
+  <script>  
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/Basemap",
+      "esri/layers/VectorTileLayer",
+      "esri/layers/FeatureLayer",
+      "esri/widgets/Search"
+    ], function(Map, MapView, Basemap, VectorTileLayer, FeatureLayer, Search) {
+
+      // OSM gray vector basemap pulled from URL:
+      // https://www.arcgis.com/home/item.html?id=1932e7d4432d45dabc0d4d13109c1f09
+      var basemap = new Basemap({
+        baseLayers: [
+          new VectorTileLayer({
+            portalItem: {
+              id: "1932e7d4432d45dabc0d4d13109c1f09"
+            }
+          })
+        ]
+      });
+
+      // Unacast social distancing layer
+      // pulled from REST API link (bottom right) of item page
+      // https://www.arcgis.com/home/item.html?id=ab72fb3e9bf24d9594f0b942718bffeb
+      var layer = new FeatureLayer({
+        url: 'https://services.arcgis.com/DO4gTjwJVIJ7O9Ca/arcgis/rest/services/Unacast_Latest_Available__Visitation_and_Distance_/FeatureServer',
+        renderer: {
+          type: 'unique-value',
+          field: 'grade_distance',
+          defaultSymbol: {type: 'simple-fill'},
+          uniqueValueInfos: [{
+            value: 'A',
+            symbol: {type: 'simple-fill', color: '#0070ff'}
+          }, {
+            value: 'B',
+            symbol: {type: 'simple-fill', color: '#bed2ff'}
+          }, {
+            value: 'C',
+            symbol: {type: 'simple-fill', color: '#e6e600'}
+          }, {
+            value: 'D',
+            symbol: {type: 'simple-fill', color: '#ffaa00'}
+          }, {
+            value: 'F',
+            symbol: {type: 'simple-fill', color: '#e60000'}
+          }],
+        },
+        popupTemplate: {
+          title: "{county_name}",
+          content: "Unacast's social distancing grade is {grade_distance}"
+        }
+      });
+
+      var map = new Map({
+        basemap,
+        layers: [layer]
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        zoom: 4,
+        center: [-95, 40] // US
+      });
+
+      var searchWidget = new Search({
+        view
+      });
+      view.ui.add(searchWidget, 'top-right');
+
+    });
+  </script>
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html>

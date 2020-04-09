@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>COVID Analysis</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/themes/light/main.css" />
+  <link rel="stylesheet" href="./css/covid.css" />
+  <script src="https://js.arcgis.com/4.15/"></script>
+  <script type="module" src="./js/app.js"></script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+  <div id="hoverPanel" class="esri-widget esri-widget--panel panel removed"></div>
+  <div id="sidePanel" class="esri-widget esri-widget--panel panel removed">
+    <h2>Explore Social Distancing</h2>
+    <div id="sliderDiv" class="esri-widget">
+      <div id="span-slider-text" class="panel-label">
+        <span>Filter by distancing grade</span>
+      </div>
+      <div id="checkBoxSlider">
+        <input type="checkbox" id="filterCheckbox" checked>
+        <label for="filterCheckbox">On/Off</label>
+      </div>
+      <div id="filterSlider" class="slider"></div>
+    </div>
+    <div class="charts">
+      <div class="panel-label">
+        <span>Distribution of grades</span>
+      </div>
+      <div>
+        <canvas id="distribution-chart" height="250" width="260" />
+      </div>
+    </div>
+  </div>
+
+  </div>
+</body>
