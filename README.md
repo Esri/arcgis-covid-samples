@@ -1,8 +1,8 @@
 # ArcGIS COVID-19 Samples
-> a general-purpose repository for COVID-19 code snippets and sample apps
+> A general-purpose repository for COVID-19 code snippets and sample apps
 
 ## Contents
-* [`js-sample-app`](/js-sample-app/): a sample web app with a few components that showcase how to make your maps and apps more interactive
+* [`js-sample-app`](/js-sample-app/): a sample web app that showcases a couple useful (and cool) client-side capabilities to help make your apps interactive
 * [`snippets-getting-started-blog`](/snippets-getting-started-blog): quick output HTML files for this [getting started blog](https://www.esri.com/arcgis-blog/products/product/mapping/developer-tools-for-covid-19-apps/)
 
 ## Other resources
@@ -15,7 +15,7 @@
 
 ## Contributing
 
-Want to make a change or add a folder with your own sample app? Awesome. Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/Esri/arcgis-covid-samples/blob/master/CONTRIBUTING.md).
+Want to make a change or add a folder with your own sample app? Awesome! Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/Esri/arcgis-covid-samples/blob/master/CONTRIBUTING.md).
 
 ## Licensing
 

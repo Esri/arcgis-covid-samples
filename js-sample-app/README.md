@@ -1,5 +1,5 @@
 # JS Sample App
-> This app showcases a couple useful (and fun) client-side capabilities to help make your apps more interactive
+> This app showcases a couple useful (and cool) client-side capabilities in the context of exploring [Unacast's Social Distancing Score](https://www.arcgis.com/home/item.html?id=ab72fb3e9bf24d9594f0b942718bffeb)
 
 ## Get started
 
