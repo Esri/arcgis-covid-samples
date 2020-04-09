@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>ArcGIS JavaScript Tutorials: Create a Starter App</title>
+  <title>COVID-19 Sample: Final</title>
   <style>
     html, body, #viewDiv {
       padding: 0;
@@ -12,7 +12,7 @@
     }
   </style>
   
-    <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/themes/light/main.css">
+  <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/themes/light/main.css">
   <script src="https://js.arcgis.com/4.15/"></script>
   
   <script>  
@@ -22,8 +22,9 @@
       "esri/Basemap",
       "esri/layers/VectorTileLayer",
       "esri/layers/FeatureLayer",
-      "esri/widgets/Search"
-    ], function(Map, MapView, Basemap, VectorTileLayer, FeatureLayer, Search) {
+      "esri/widgets/Search",
+      "esri/widgets/Legend"
+    ], function(Map, MapView, Basemap, VectorTileLayer, FeatureLayer, Search, Legend) {
 
       // OSM gray vector basemap pulled from URL:
       // https://www.arcgis.com/home/item.html?id=1932e7d4432d45dabc0d4d13109c1f09
@@ -46,6 +47,7 @@
           type: 'unique-value',
           field: 'grade_distance',
           defaultSymbol: {type: 'simple-fill'},
+          legendOptions: {title: 'Grade'},
           uniqueValueInfos: [{
             value: 'A',
             symbol: {type: 'simple-fill', color: '#0070ff'}
@@ -85,6 +87,11 @@
         view
       });
       view.ui.add(searchWidget, 'top-right');
+      
+      var legendWidget = new Legend({
+        view
+      });
+      view.ui.add(legendWidget, 'bottom-right');
 
     });
   </script>
