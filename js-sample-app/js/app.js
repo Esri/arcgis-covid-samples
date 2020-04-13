@@ -197,13 +197,12 @@ require([
         if (!checkbox.checked) {
           analysisSlider.disabled = true;
           layerView.effect = {}; // remove filter and effect from map     
-          updateChart(defaultSliderValues, view, chart, featureLayer, defaultQueryAttribute, promiseUtils);
         }
         else {
           analysisSlider.disabled = false;
           filterEffect(analysisSlider.values, view, featureLayer, defaultQueryAttribute, promiseUtils);
-          updateChart(analysisSlider.values, view, chart, featureLayer, defaultQueryAttribute, promiseUtils);
         }
+        updateChart(analysisSlider.values, view, chart, featureLayer, defaultQueryAttribute, promiseUtils);
       });      
     }
   });
