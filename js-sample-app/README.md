@@ -1,6 +1,8 @@
 # JS Sample App
 > This app showcases a couple useful (and cool) client-side capabilities in the context of exploring [Unacast's Social Distancing Score](https://www.arcgis.com/home/item.html?id=ab72fb3e9bf24d9594f0b942718bffeb)
 
+![App](https://raw.github.com/Esri/arcgis-covid-samples/master/covid-js-example.png)
+
 ## Get started
 
 1. Clone the repository, ex `$ git clone https://github.com/Esri/arcgis-covid-samples.git`
