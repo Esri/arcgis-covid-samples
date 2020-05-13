@@ -28,9 +28,9 @@
 
 const renderer = {
   "type": "unique-value",
-  "field": "grade_total",
+  "field": "grade_distance",
   "legendOptions": {
-    "title": "Grade"
+    "title": "Distancing Grade"
   },
   "defaultLabel": "Other",
   "defaultSymbol": {
@@ -287,8 +287,8 @@ const labelingInfo = [
   {
     "labelExpression": null,
     "labelExpressionInfo": {
-      "expression": "$feature[\"grade_total\"]",
-      "value": "{grade_total}"
+      "expression": "$feature[\"grade_distance\"]",
+      "value": "{grade_distance}"
     },
     "useCodedValues": true,
     "maxScale": 0,

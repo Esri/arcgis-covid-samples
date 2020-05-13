@@ -43,42 +43,51 @@ const updateChart = (sliderThumbValue, view, chart, featureLayer, attribute, pro
 }
 
 // Calculate the number of times each grade appears in the feature result array
-// Represents the grades A thru F: [A, B, C, D, F]
+// Represents trend Rank: [1, 2, 3, 4, 5]
 const calculateStats = (results /* Array */) => { // features array
 
   const count_a = results.features.reduce((n, val) => {
-    return n + (val.attributes.grade_total === "A");
+    return n + (val.attributes.grade_distance === "A");
   }, 0);
   const count_a_minus = results.features.reduce((n, val) => {
-    return n + (val.attributes.grade_total === "A-");
-  }, 0);  
+    return n + (val.attributes.grade_distance === "A-");
+  }, 0);
   const count_b = results.features.reduce((n, val) => {
-    return n + (val.attributes.grade_total === "B");
-  }, 0);    
+    return n + (val.attributes.grade_distance === "B");
+  }, 0);
+  const count_b_plus = results.features.reduce((n, val) => {
+    return n + (val.attributes.grade_distance === "B+");
+  }, 0);
   const count_b_minus = results.features.reduce((n, val) => {
-    return n + (val.attributes.grade_total === "B-");
-  }, 0);   
+    return n + (val.attributes.grade_distance === "B-");
+  }, 0);
   const count_c = results.features.reduce((n, val) => {
-    return n + (val.attributes.grade_total === "C");
-  }, 0);  
+    return n + (val.attributes.grade_distance === "C");
+  }, 0);
+  const count_c_plus = results.features.reduce((n, val) => {
+    return n + (val.attributes.grade_distance === "C+");
+  }, 0);
   const count_c_minus = results.features.reduce((n, val) => {
-    return n + (val.attributes.grade_total === "C-");
-  }, 0);    
+    return n + (val.attributes.grade_distance === "C-");
+  }, 0);
   const count_d = results.features.reduce((n, val) => {
-    return n + (val.attributes.grade_total === "D");
-  }, 0);    
+    return n + (val.attributes.grade_distance === "D");
+  }, 0);
+  const count_d_plus = results.features.reduce((n, val) => {
+    return n + (val.attributes.grade_distance === "D+");
+  }, 0);
   const count_d_minus = results.features.reduce((n, val) => {
-    return n + (val.attributes.grade_total === "D-");
-  }, 0);  
+    return n + (val.attributes.grade_distance === "D-");
+  }, 0);
   const count_f = results.features.reduce((n, val) => {
-    return n + (val.attributes.grade_total === "F");
-  }, 0);  
-  
+    return n + (val.attributes.grade_distance === "F");
+  }, 0);
+
   return [
     count_a + count_a_minus,
-    count_b + count_b_minus,
-    count_c + count_c_minus,
-    count_d + count_d_minus,
+    count_b + count_b_minus + count_b_plus,
+    count_c + count_c_minus + count_c_plus,
+    count_d + count_d_minus + count_d_plus,
     count_f
   ]
 }

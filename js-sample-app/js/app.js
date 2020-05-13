@@ -70,9 +70,9 @@ require([
       outFields: defaultFeatureLayerOutfields,
       popupTemplate: {
         title: "{county_name}",
-        content: "Unacast's grade is {grade_total}"
+        content: "Unacast distance grade: {grade_distance}"
       },
-      definitionExpression: `"grade_total" IS NOT NULL`,
+      definitionExpression: `"grade_distance" IS NOT NULL`,
       popupEnabled: false,
       renderer: renderer,
       labelingInfo: labelingInfo,
@@ -114,6 +114,7 @@ require([
     const expandSearch = new Expand({
       view,
       content: search,
+      expanded: true,
       expandIconClass: 'esri-icon-search'
     });
     view.ui.add(expandSearch, 'top-right');
@@ -184,7 +185,7 @@ require([
       // Extent change handler
       watchUtils.whenTrue(view, 'stationary', async _ => {
         await watchUtils.whenFalseOnce(layerView, 'updating');
-        updateChart([-100, 20], view, chart, featureLayer, defaultQueryAttribute, promiseUtils);
+        updateChart(defaultSliderValues, view, chart, featureLayer, defaultQueryAttribute, promiseUtils);
       });     
       
       // Future functionality when you click on a chart element
