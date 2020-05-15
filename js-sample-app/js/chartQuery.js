@@ -26,6 +26,7 @@ const chartQuery = (layerView, whereClause) => {
 
 // Update the chart using slider values as inputs into a query
 const updateChart = (sliderThumbValue, view, chart, featureLayer, attribute, promiseUtils) => {
+  console.log(sliderThumbValue);
   const debounce = promiseUtils.debounce(async (sliderThumbValue) => {
     const layerView = await view.whenLayerView(featureLayer);
     const whereClause = attribute + "<'" + (sliderThumbValue[1] / 100) + "' AND " + attribute + ">'" + (sliderThumbValue[0] / 100) + "'";

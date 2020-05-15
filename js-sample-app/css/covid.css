@@ -33,7 +33,12 @@ body,
   display: none;
 }
 
-/* Esri Overrides */
+/* horizontal divider */
+.horizontal {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
 .esri-widget--button,
 .esri-search__input,
 .esri-widget {
@@ -47,36 +52,9 @@ body,
   max-width: 200px;
 }
 
-/* #resultDiv {
-  width: 332px;
-  border-radius: 15px;
-  box-shadow:   4px 6px rgba(35,35,35,0.25);  
-  min-width: 250px;
-  font-size: 14px;
-  padding: 10px;
-  display: none;
-  overflow-y: auto;
-  overflow-x: hidden;  
+.esri-popup__main-container {
+  width: 325px !important;
 }
-
-#timeSlider {
-  position: absolute;
-  left: 100px;
-  right: 100px;
-  bottom: 20px;
-}
-
-.esri-feature {
-  font-size: 14px;
-  color: #5b5d5e;  
-  letter-spacing: 0em;
-  line-height: 1.55rem;
-  font-feature-settings: "liga" 1, "calt" 0;
-  background: #fff;
-  padding: 1em;
-  border-radius: 15px;
-  box-shadow:   4px 6px rgba(35,35,35,0.25);    
-} */
 
 .esri-feature__size-container .esri-feature__title .esri-feature__main-container {
   font-size: 14px;
@@ -85,11 +63,17 @@ body,
   line-height: 1.55rem;  
 }
 
-/* .esri-search { */
-  /* width: 332px; */
+.esri-search { 
+  width: 100%;
   /* border-radius: 15px; */
-  /* box-shadow:   4px 6px rgba(35,35,35,0.25) !important;   */
-/* } */
+  box-shadow:   4px 6px rgba(35,35,35,0.15) !important;   
+}
+
+.esri-search__form {
+  border: 1px;
+  border-color: lightgray;
+  border-style: solid;
+}
 
 .panel-label{
   font-size: 14px;
@@ -118,30 +102,3 @@ body,
   height: 60px;
   border-radius: 15px;
 }
-
-/* #filterSlider .esri-slider__track {
-  background-color: #5d7f4a;
-  height: 10px;
-}
-
-#filterSlider .esri-slider__thumb {
-  background-color: #515151;
-  border: 2px solid white;
-  border-radius: 24px;
-  height: 24px;
-  left: -12px;
-  top: -6px;
-  width: 24px;
-}
-
-#filterSlider .esri-slider__anchor:focus .esri-slider__thumb {
-  background-color: #777;
-}
-
-#filterSlider .esri-slider__segment-0 {
-  background-color: #5d7f4a;
-}
-
-#sliderDiv .esri-slider__segment-1 {
-  background-color: #ddd;
-}   */

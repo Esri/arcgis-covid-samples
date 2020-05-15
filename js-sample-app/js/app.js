@@ -18,7 +18,7 @@
 
 // since this is imported as a module in the HTML, we can use modern import syntax
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
-import { layerUrl, defaultSliderValues, defaultQueryAttribute, defaultFeatureLayerOutfields, vectorTileLayerID } from './config.js';
+import { layerUrl, locatorUrl, defaultSliderValues, defaultQueryAttribute, defaultFeatureLayerOutfields, vectorTileLayerID } from './config.js';
 import { initHover } from './hover.js';
 import { initChart } from './chart.js';
 import { initSlider } from './slider.js';
@@ -40,6 +40,7 @@ require([
   "esri/widgets/Slider", 
   "esri/widgets/Expand",
   "esri/widgets/Legend",
+  "esri/tasks/Locator",
   // utils
   "esri/core/promiseUtils",
   "esri/core/watchUtils"], (
@@ -55,6 +56,7 @@ require([
     Slider,
     Expand,
     Legend,
+    Locator,
     // utils
     promiseUtils,
     watchUtils
@@ -76,7 +78,8 @@ require([
       popupEnabled: false,
       renderer: renderer,
       labelingInfo: labelingInfo,
-      title: "Unacast social distancing"
+      title: "Unacast social distancing",
+      opacity: 0.75
     });
 
     const basemap = new Basemap({
@@ -108,21 +111,36 @@ require([
     panelEl.classList.remove("removed");
     view.ui.add(panelEl, "top-left");   
 
+    const searchEl = document.querySelector("#searchDiv");
+
     const search = new Search({
-      view
+      view,
+      container: searchEl,
+      includeDefaultSources: false, // we only want to display one search source
+      sources: [{
+        locator: new Locator({
+          url: locatorUrl
+        }),
+        name: "LocatorSearchSource",
+        placeholder: "example: Colorado, USA",
+        // zoomScale: 500000,
+      }]      
     });
+
     const expandSearch = new Expand({
       view,
       content: search,
       expanded: true,
       expandIconClass: 'esri-icon-search'
     });
-    view.ui.add(expandSearch, 'top-right');
+
+    // view.ui.add(expandSearch, 'top-right');
     view.ui.move('zoom', 'top-right');
 
     const legend = new Legend({
       view
     });
+
     const expandLegend = new Expand({
       view,
       content: legend,
@@ -198,12 +216,13 @@ require([
         if (!checkbox.checked) {
           analysisSlider.disabled = true;
           layerView.effect = {}; // remove filter and effect from map     
+          updateChart(defaultSliderValues, view, chart, featureLayer, defaultQueryAttribute, promiseUtils);
         }
         else {
           analysisSlider.disabled = false;
           filterEffect(analysisSlider.values, view, featureLayer, defaultQueryAttribute, promiseUtils);
+          updateChart(analysisSlider.values, view, chart, featureLayer, defaultQueryAttribute, promiseUtils);
         }
-        updateChart(analysisSlider.values, view, chart, featureLayer, defaultQueryAttribute, promiseUtils);
       });      
     }
   });
