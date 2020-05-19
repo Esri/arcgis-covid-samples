@@ -23,7 +23,7 @@ const initSlider = (sliderEl, Slider) => {
     container: sliderEl,
     min: defaultSliderValues[0],
     max: defaultSliderValues[1],
-    steps: 10,
+    steps: 1,
     values: defaultSliderValues,
     visibleElements: {
       rangeLabels: true,

@@ -21,6 +21,7 @@
 import { layerUrl, locatorUrl, defaultSliderValues, defaultQueryAttribute, defaultFeatureLayerOutfields, vectorTileLayerID } from './config.js';
 import { initHover } from './hover.js';
 import { initChart } from './chart.js';
+import { whereClauseBuilder } from './query.js';
 import { initSlider } from './slider.js';
 import { renderer, labelingInfo } from './renderer.js';
 import { filterEffect } from './filterEffect.js';
@@ -79,7 +80,7 @@ require([
       renderer: renderer,
       labelingInfo: labelingInfo,
       title: "Unacast social distancing",
-      opacity: 0.75
+      opacity: 0.65
     });
 
     const basemap = new Basemap({
@@ -127,14 +128,6 @@ require([
       }]      
     });
 
-    const expandSearch = new Expand({
-      view,
-      content: search,
-      expanded: true,
-      expandIconClass: 'esri-icon-search'
-    });
-
-    // view.ui.add(expandSearch, 'top-right');
     view.ui.move('zoom', 'top-right');
 
     const legend = new Legend({
@@ -174,8 +167,9 @@ require([
       
       // Create chart using initial values once the layerView has finished loading
       watchUtils.whenNotOnce(layerView, "updating")
-        .then(async _ => {      
-          updateChart(analysisSlider.values, view, chart, featureLayer, defaultQueryAttribute, promiseUtils);             
+        .then(async _ => {     
+          const whereClause = whereClauseBuilder(analysisSlider.values, defaultQueryAttribute);           
+          updateChart(whereClause, view, chart, featureLayer, promiseUtils);             
           const { updateHover } = initHover(featureWidget, featureLayer, promiseUtils);
           initEventListeners(layerView, updateHover);                            
         });        
@@ -189,9 +183,10 @@ require([
 
       // Listen for slider changes and then update filter/effect + chart
       analysisSlider.on(["thumb-drag"], (e) => {
-        if (e.state === "drag" || e.state === "stop") {
-          filterEffect(analysisSlider.values, view, featureLayer, defaultQueryAttribute, promiseUtils);
-          updateChart(analysisSlider.values, view, chart, featureLayer, defaultQueryAttribute, promiseUtils);
+        if (e.state === "drag") {
+          const whereClause = whereClauseBuilder(analysisSlider.values, defaultQueryAttribute);
+          filterEffect(whereClause, view, featureLayer, promiseUtils);
+          updateChart(whereClause, view, chart, featureLayer, promiseUtils);
         }
       });    
 
@@ -203,7 +198,8 @@ require([
       // Extent change handler
       watchUtils.whenTrue(view, 'stationary', async _ => {
         await watchUtils.whenFalseOnce(layerView, 'updating');
-        updateChart(defaultSliderValues, view, chart, featureLayer, defaultQueryAttribute, promiseUtils);
+        const whereClause = whereClauseBuilder(analysisSlider.values, defaultQueryAttribute);        
+        updateChart(whereClause, view, chart, featureLayer, promiseUtils);
       });     
       
       // Future functionality when you click on a chart element
@@ -212,16 +208,18 @@ require([
       }         
       
       // Update filter/effect and chart based on whether or not checkbox is selected
-      checkbox.addEventListener("change", () => {
+      checkbox.addEventListener("change", () => {        
         if (!checkbox.checked) {
           analysisSlider.disabled = true;
           layerView.effect = {}; // remove filter and effect from map     
-          updateChart(defaultSliderValues, view, chart, featureLayer, defaultQueryAttribute, promiseUtils);
+          const whereClause = whereClauseBuilder(defaultSliderValues, defaultQueryAttribute);          
+          updateChart(whereClause, view, chart, featureLayer, promiseUtils);
         }
         else {
           analysisSlider.disabled = false;
-          filterEffect(analysisSlider.values, view, featureLayer, defaultQueryAttribute, promiseUtils);
-          updateChart(analysisSlider.values, view, chart, featureLayer, defaultQueryAttribute, promiseUtils);
+          const whereClause = whereClauseBuilder(analysisSlider.values, defaultQueryAttribute);                   
+          filterEffect(whereClause, view, featureLayer, promiseUtils);          
+          updateChart(whereClause, view, chart, featureLayer, promiseUtils);
         }
       });      
     }

@@ -24,14 +24,36 @@
   * Sample app: https://developers.arcgis.com/javascript/latest/sample-code/featurefilter-attributes/index.html 
 */
 
-const filterEffect = (sliderThumbValue, view, featureLayer, attribute, promiseUtils) => {
+const convertNumberToLetter = (number) => {
+  let final = 0;
+  switch(number) {
+    case 0:
+      final = "A";
+      break;
+    case 1:
+      final = "B";
+      break;
+    case 2:
+      final = "C";
+      break;
+    case 3:
+      final = "D";
+      break;
+    case 4:
+      final = "F";
+      break;
+  }
+
+  return final;
+}
+
+const filterEffect = (whereClause, view, featureLayer, promiseUtils) => {
 
   // Debounce to minimize the number of times the filter and effect gets applied as the user moves the slider
-  const debounce = promiseUtils.debounce((sliderThumbValue) => {
+  const debounce = promiseUtils.debounce((whereClause) => {
 
     // https://developers.arcgis.com/javascript/latest/api-reference/esri-views-MapView.html#whenLayerView
     view.whenLayerView(featureLayer).then((layerView) => {;
-      const whereClause = attribute + "<'" + (sliderThumbValue[1] / 100) + "' AND " + attribute + ">'" + (sliderThumbValue[0] / 100) + "'";
       const filter = {
         where: whereClause,
       };
@@ -43,7 +65,7 @@ const filterEffect = (sliderThumbValue, view, featureLayer, attribute, promiseUt
     });
   });  
 
-  debounce(sliderThumbValue);  
+  debounce(whereClause);  
 }
 
 export {

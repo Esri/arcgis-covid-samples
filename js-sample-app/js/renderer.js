@@ -80,31 +80,31 @@ const renderer = {
       },
       "value": "A"
     },
-    {
-      "label": "A-",
-      "symbol": {
-        "type": "simple-fill",
-        "color": [
-          0,
-          112,
-          255,
-          255
-        ],
-        "outline": {
-          "type": "simple-line",
-          "color": [
-            235,
-            235,
-            235,
-            191
-          ],
-          "width": 0.75,
-          "style": "solid"
-        },
-        "style": "solid"
-      },
-      "value": "A-"
-    },
+    // {
+    //   "label": "A-",
+    //   "symbol": {
+    //     "type": "simple-fill",
+    //     "color": [
+    //       0,
+    //       112,
+    //       255,
+    //       255
+    //     ],
+    //     "outline": {
+    //       "type": "simple-line",
+    //       "color": [
+    //         235,
+    //         235,
+    //         235,
+    //         191
+    //       ],
+    //       "width": 0.75,
+    //       "style": "solid"
+    //     },
+    //     "style": "solid"
+    //   },
+    //   "value": "A-"
+    // },
     {
       "label": "B",
       "symbol": {
@@ -130,31 +130,31 @@ const renderer = {
       },
       "value": "B"
     },
-    {
-      "label": "B-",
-      "symbol": {
-        "type": "simple-fill",
-        "color": [
-          190,
-          232,
-          255,
-          255
-        ],
-        "outline": {
-          "type": "simple-line",
-          "color": [
-            235,
-            235,
-            235,
-            191
-          ],
-          "width": 0.75,
-          "style": "solid"
-        },
-        "style": "solid"
-      },
-      "value": "B-"
-    },
+    // {
+    //   "label": "B-",
+    //   "symbol": {
+    //     "type": "simple-fill",
+    //     "color": [
+    //       190,
+    //       232,
+    //       255,
+    //       255
+    //     ],
+    //     "outline": {
+    //       "type": "simple-line",
+    //       "color": [
+    //         235,
+    //         235,
+    //         235,
+    //         191
+    //       ],
+    //       "width": 0.75,
+    //       "style": "solid"
+    //     },
+    //     "style": "solid"
+    //   },
+    //   "value": "B-"
+    // },
     {
       "label": "C",
       "symbol": {
@@ -180,31 +180,31 @@ const renderer = {
       },
       "value": "C"
     },
-    {
-      "label": "C-",
-      "symbol": {
-        "type": "simple-fill",
-        "color": [
-          255,
-          211,
-          127,
-          255
-        ],
-        "outline": {
-          "type": "simple-line",
-          "color": [
-            235,
-            235,
-            235,
-            191
-          ],
-          "width": 0.75,
-          "style": "solid"
-        },
-        "style": "solid"
-      },
-      "value": "C-"
-    },
+    // {
+    //   "label": "C-",
+    //   "symbol": {
+    //     "type": "simple-fill",
+    //     "color": [
+    //       255,
+    //       211,
+    //       127,
+    //       255
+    //     ],
+    //     "outline": {
+    //       "type": "simple-line",
+    //       "color": [
+    //         235,
+    //         235,
+    //         235,
+    //         191
+    //       ],
+    //       "width": 0.75,
+    //       "style": "solid"
+    //     },
+    //     "style": "solid"
+    //   },
+    //   "value": "C-"
+    // },
     {
       "label": "D",
       "symbol": {
@@ -230,31 +230,31 @@ const renderer = {
       },
       "value": "D"
     },
-    {
-      "label": "D-",
-      "symbol": {
-        "type": "simple-fill",
-        "color": [
-          255,
-          0,
-          0,
-          255
-        ],
-        "outline": {
-          "type": "simple-line",
-          "color": [
-            235,
-            235,
-            235,
-            191
-          ],
-          "width": 0.75,
-          "style": "solid"
-        },
-        "style": "solid"
-      },
-      "value": "D-"
-    },
+    // {
+    //   "label": "D-",
+    //   "symbol": {
+    //     "type": "simple-fill",
+    //     "color": [
+    //       255,
+    //       0,
+    //       0,
+    //       255
+    //     ],
+    //     "outline": {
+    //       "type": "simple-line",
+    //       "color": [
+    //         235,
+    //         235,
+    //         235,
+    //         191
+    //       ],
+    //       "width": 0.75,
+    //       "style": "solid"
+    //     },
+    //     "style": "solid"
+    //   },
+    //   "value": "D-"
+    // },
     {
       "label": "F",
       "symbol": {
