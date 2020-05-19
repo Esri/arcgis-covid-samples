@@ -18,34 +18,11 @@
 
 const grades = ["A","B","C","D","F"];
 
-const convertNumberToLetter = (number) => {
-  let final = 0;
-  switch (number) {
-    case 0:
-      final = "A";
-      break;
-    case 1:
-      final = "B";
-      break;
-    case 2:
-      final = "C";
-      break;
-    case 3:
-      final = "D";
-      break;
-    case 4:
-      final = "F";
-      break;
-  }
-
-  return final;
-}
-
 const whereClauseBuilder = (sliderValues, attribute) => {
   let query = "";
   const tempArray = grades.slice(sliderValues[0],sliderValues[1] + 1);
   tempArray.forEach( e => {
-    if(e == convertNumberToLetter(sliderValues[1])){
+    if(e == grades[sliderValues[1]]){
       query += attribute + "='" + e + "'";
     }
     else {
